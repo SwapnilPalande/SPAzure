@@ -1,0 +1,84 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "networkInterfaceName": {
+      "type": "string"
+    },
+    "networkSecurityGroupName": {
+      "type": "string"
+    },
+    "networkSecurityGroupRules": {
+      "type": "array"
+    },
+    "virtualNetworkId": {
+      "type": "string"
+    },
+    "subnetName": {
+      "type": "string"
+    },
+    "publicIpAddressName": {
+      "type": "string"
+    },
+    "publicIpAddressType": {
+      "type": "string"
+    },
+    "publicIpAddressSku": {
+      "type": "string"
+    },
+    "virtualMachineName": {
+      "type": "string"
+    },
+    "virtualMachineRG": {
+      "type": "string"
+    },
+    "osDiskType": {
+      "type": "string"
+    },
+    "virtualMachineSize": {
+      "type": "string"
+    },
+    "adminUsername": {
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "secureString"
+    },
+    "autoShutdownStatus": {
+      "type": "string"
+    },
+    "autoShutdownTime": {
+      "type": "string"
+    },
+    "autoShutdownTimeZone": {
+      "type": "string"
+    },
+    "autoShutdownNotificationStatus": {
+      "type": "string"
+    },
+    "autoShutdownNotificationLocale": {
+      "type": "string"
+    },
+    "backupVaultName": {
+      "type": "string"
+    },
+    "backupFabricName": {
+      "type": "string"
+    },
+    "backupVaultRGName": {
+      "type": "string"
+    },
+    "backupVaultRGIsNew": {
+      "type": "bool"
+    },
+    "backupPolicyName": {
+      "type": "string"
+    },
+    "backupItemName": {
+      "type": "string"
+    }
+  },
+  

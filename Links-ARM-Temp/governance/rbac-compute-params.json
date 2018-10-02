@@ -1,0 +1,100 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "computeguid1": {
+      "value": ""
+    },
+    "computeguid2": {
+      "value": ""
+    },
+    "computeguid3": {
+      "value": ""
+    },
+    "computeguid4": {
+      "value": ""
+    },
+    "builtInRoleType": {
+      "value": {
+        "Reader": [
+          {
+            "Role": "Reader"
+          }
+        ],
+        "BillingReader": [
+          {
+            "Role": "Billing Reader"
+          }
+        ],
+        "Contributor": [
+          {
+            "Role": "Contributor"
+          }
+        ],
+        "Owner": [
+          {
+            "Role": "Owner"
+          }
+        ]
+      }
+    },
+    "principalid": {
+      "value": {
+        "ugglobalowner ": [
+          {
+            "id": "5e60d101-b6bb-4bc1-9689-1a0043043462"
+          }
+        ],
+        "ugglobalcontributor": [
+          {
+            "id": "1c546d7d-e907-4235-b0e0-f76854328e3f"
+          }
+        ],
+        "ugglobalreader": [
+
+          {
+            "id": "865a48b6-b1f2-48ec-b0c0-7390ec8411df"
+          }
+        ],
+        "ugglobalbilling": [
+          {
+            "id": "b0a6d0c3-15d0-451d-baad-31cecaa41d7f"
+          }
+        ],
+        "ugcomputecontributor": [
+          {
+            "id": "8f569219-675c-4a36-a550-ed3515ecf216"
+          }
+        ],
+        "ugnetworkcontributor": [
+          {
+            "id": "444e818f-4464-4db0-9608-8debdd235ac6"
+          }
+        ],
+        "ugdataontributor": [
+          {
+            "id": "92860e8a-b5ca-4852-914a-e034573d67bb"
+          }
+        ]
+      }
+    },
+    "customerid": {
+      "value": ""
+    },
+    "function": {
+      "value": ""
+    },
+    "environment": {
+      "value": ""
+    },
+    "location": {
+      "value": ""
+    },
+    "tier": {
+      "value": ""
+    },
+    "deploymentregion": {
+      "value": ""
+    }
+  }
+}

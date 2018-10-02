@@ -1,0 +1,123 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "apiProfile": "2017-03-09-profile",
+  "parameters": {
+    "deploymentregion": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "allowedValues": [
+        "ase",
+        "ae",
+        "ukw",
+        "uks",
+        "usw",
+        "use"
+      ]
+    },
+    "customerid": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string",
+      "allowedValues": [
+        "prod",
+        "dev"
+      ]
+    },
+    "tier": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "rgvariables": {
+      "networkrg": "[concat(tolower('rg-'), parameters(tolower('CustomerID')), '-', parameters(tolower('location')), '-network-', parameters(tolower('Environment')))]",
+      "computerg": "[concat(tolower('rg-'), parameters(tolower('CustomerID')), '-', parameters(tolower('location')), '-compute-', parameters(tolower('Environment')))]",
+      "datarg": "[concat(tolower('rg-'), parameters(tolower('CustomerID')), '-', parameters(tolower('location')), '-data-', parameters(tolower('Environment')))]",
+      "backuprg": "[concat(tolower('rg-'), parameters(tolower('CustomerID')), '-', parameters(tolower('location')), '-backup-', parameters(tolower('Environment')))]"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2018-05-01",
+      "comments": "This creates the network resource group",
+      "type": "Microsoft.Resources/resourceGroups",
+      "location": "[parameters('deploymentregion')]",
+      "name": "[variables('rgvariables').networkrg]",
+      "properties": {
+      },
+      "tags": {
+        "Environment": "[parameters('environment')]",
+        "Location": "[parameters('location')]",
+        "Tier": "[parameters('tier')]",
+        "CustomerID": "[parameters('customerid')]",
+        "Function": "network"
+      }
+    },
+    {
+      "apiVersion": "2018-05-01",
+      "comments": "This creates the compute resource group",
+      "type": "Microsoft.Resources/resourceGroups",
+      "location": "[parameters('deploymentregion')]",
+      "name": "[variables('rgvariables').computerg]",
+      "properties": {},
+      "tags": {
+        "Environment": "[parameters('environment')]",
+        "Location": "[parameters('location')]",
+        "Tier": "[parameters('tier')]",
+        "CustomerID": "[parameters('customerid')]",
+        "Function": "compute"
+      }
+    },
+    {
+      "apiVersion": "2018-05-01",
+      "comments": "This creates the data resource group",
+      "type": "Microsoft.Resources/resourceGroups",
+      "location": "[parameters('deploymentregion')]",
+      "name": "[variables('rgvariables').datarg]",
+      "properties": {},
+      "tags": {
+        "Environment": "[parameters('environment')]",
+        "Location": "[parameters('location')]",
+        "Tier": "[parameters('tier')]",
+        "CustomerID": "[parameters('customerid')]",
+        "Function": "data"
+      }
+    },
+    {
+      "apiVersion": "2018-05-01",
+      "comments": "This creates the backup resource group",
+      "type": "Microsoft.Resources/resourceGroups",
+      "location": "[parameters('deploymentregion')]",
+      "name": "[variables('rgvariables').backuprg]",
+      "properties": {},
+      "tags": {
+        "Environment": "[parameters('environment')]",
+        "Location": "[parameters('location')]",
+        "Tier": "[parameters('tier')]",
+        "CustomerID": "[parameters('customerid')]",
+        "Function": "backup"
+      }
+    }
+  ],
+  "outputs": {
+    "networkingrgname": {
+      "type": "string",
+      "value": "[variables('rgvariables').networkrg]"
+    },
+    "computingrgname": {
+      "type": "string",
+      "value": "[variables('rgvariables').computerg]"
+    },
+    "datargname": {
+      "type": "string",
+      "value": "[variables('rgvariables').datarg]"
+    },
+    "backuprgname": {
+      "type": "string",
+      "value": "[variables('rgvariables').backuprg]"
+    }
+  }
+}

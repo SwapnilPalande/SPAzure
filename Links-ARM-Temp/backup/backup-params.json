@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": ""
+    },
+    "deploymentregion": {
+      "value": ""
+    },
+    "customerid": {
+      "value": ""
+    },
+    "environment": {
+      "value": ""
+    },
+    "tier": {
+      "value": ""
+    },
+    "Function": {
+      "value": "backup"
+    },
+    "scheduleRunTimes": {
+      "value": [ "2017-01-26T00:30:00Z" ]
+    },
+    "timeZone": {
+      "value": "UTC+12"
+    },
+    "dailyRetentionDurationCount": {
+      "value": 7
+    },
+    "daysOfTheWeek": {
+      "value": [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+    },
+    "weeklyRetentionDurationCount": {
+      "value": 1
+    },
+    "monthlyRetentionDurationCount": {
+      "value": 4
+    }
+  }
+}

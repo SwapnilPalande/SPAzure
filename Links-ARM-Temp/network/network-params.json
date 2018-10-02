@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "customerid": {
+      "value": ""
+    },
+    "deploymentregion": {
+      "value": "" 
+    },
+    "environment": {
+      "value": ""
+    },
+    "function": {
+      "value": "network"
+    },
+    "location": {
+      "value": ""
+    },
+    "tier": {
+      "value": ""
+    },
+    "vnetsettings": {
+      "value": {
+        "vnet": [
+          {
+            "name": "vnetprefix",
+            "vnetaddress": "10.194.0.0/25"
+          }
+        ],
+        "subnets": [
+          {
+            "name": "privatesubnet",
+            "publicaddress": "10.194.0.0/27"
+          },
+          {
+            "name": "privatesubnet",
+            "privateaddress": "10.194.0.32/27"
+          }
+        ],
+        "peering": [
+          {
+            "peerednetwork": "/subscriptions/594e911c-aaeb-45b8-a476-9033fd90c5ef/resourceGroups/rg-sharedservices-ase-networking-prod/providers/Microsoft.Network/virtualNetworks/vnet-sharedservices-ase-prod",
+            "peerednetworkaddress": "10.192.128.0/18"
+          }
+        ]
+      }
+    }
+  }
+}

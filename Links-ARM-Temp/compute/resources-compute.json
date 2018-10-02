@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "Location": {
+      "type": "string",
+      "allowedValues": [
+        "ase",
+        "ae",
+        "ukw",
+        "uks",
+        "usw",
+        "use"
+      ]
+    },
+    "CustomerID": {
+      "type": "string"
+    },
+    "Environment": {
+      "type": "string",
+      "allowedValues": [
+        "prod",
+        "dev"
+      ]
+    },
+    "Tier": {
+      "type": "string",
+      "allowedValues": [
+        "standard",
+        "premium"
+      ]
+    },
+    "Function": {
+      "type": "string",
+      "allowedValues": [
+        "network",
+        "compute",
+        "backup",
+        "data"
+      ]
+    }
+  },
+  "variables": {
+    "rgName": "[concat(tolower('rg-'), parameters(tolower('CustomerID')), '-', parameters(tolower('Location')), '-', parameters(tolower('Function')), '-', parameters(tolower('Environment')))]"
+  },
+  "resources": [
+    {
+      "comments": "This Creations the Network Resource Group",
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "location": "Australia East",
+      "name": "[variables('rgName')]",
+      "properties": {},
+      "tags": {
+        "Environment": "[parameters('Environment')]",
+        "Location": "[parameters('Location')]",
+        "Tier": "[parameters('Tier')]",
+        "CustomerID": "[parameters('CustomerID')]",
+        "Function": "[parameters('Function')]"
+      }
+    }
+  ],
+  "outputs": {
+    "Validate": {
+      "value": "Successfully Deployed [reference(variables('rgName'))]",
+      "type": "string"
+      }
+    }
+  }

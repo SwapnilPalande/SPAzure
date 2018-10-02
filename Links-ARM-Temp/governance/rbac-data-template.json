@@ -1,0 +1,90 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dataguid1": {
+      "type": "string"
+    },
+    "dataguid2": {
+      "type": "string"
+    },
+    "dataguid3": {
+      "type": "string"
+    },
+    "dataguid4": {
+      "type": "string"
+    },
+    "builtInRoleType": {
+      "type": "object"
+    },
+    "principalid": {
+      "type": "object"
+    },
+    "customerid": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "string"
+    },
+    "function": {
+      "type": "string"
+    },
+    "deploymentregion": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+    "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
+    "Billing Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2017-05-01",
+      "name": "[parameters('dataguid1')]",
+      "properties": {
+        "roleDefinitionId": "[variables(parameters('builtInRoleType').Contributor[0].role)]",
+        "principalId": "[parameters('principalid').ugglobalcontributor[0].id]",
+        "scope": "[resourceGroup().id]"
+      }
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2017-05-01",
+      "name": "[parameters('dataguid2')]",
+      "properties": {
+        "roleDefinitionId": "[variables(parameters('builtInRoleType').Contributor[0].role)]",
+        "principalId": "[parameters('principalid').ugdataontributor[0].id]",
+        "scope": "[resourceGroup().id]"
+      }
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2017-05-01",
+      "name": "[parameters('dataguid3')]",
+      "properties": {
+        "roleDefinitionId": "[variables(parameters('builtInRoleType').Reader[0].role)]",
+        "principalId": "[parameters('principalid').ugglobalreader[0].id]",
+        "scope": "[resourceGroup().id]"
+      }
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2017-05-01",
+      "name": "[parameters('dataguid4')]",
+      "properties": {
+        "roleDefinitionId": "[variables(parameters('builtInRoleType').BillingReader[0].role)]",
+        "principalId": "[parameters('principalid').ugglobalbilling[0].id]",
+        "scope": "[resourceGroup().id]"
+      }
+    }
+  ]
+}
